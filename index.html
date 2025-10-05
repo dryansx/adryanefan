@@ -65,7 +65,7 @@
                     <div class="stat-change positive">Telecommunication Engineering</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">4</div>
+                    <div class="stat-number">5</div>
                     <div class="stat-label">Experience</div>
                     <div class="stat-change positive">Professional Growth</div>
                 </div>
@@ -78,6 +78,10 @@
                     <div class="stat-number">2024</div>
                     <div class="stat-label">Recent Internship</div>
                     <div class="stat-change positive">KAI Indonesia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Skills</div>
+                    <div class="stat-label">Hard & Soft</div>
                 </div>
             </div>
 
@@ -118,6 +122,23 @@
                             </ul>
                         </div>
                         <img src="aset/images/kai.jpg" alt="KAI Logo" class="experience-logo">
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <div class="experience-title">Telkom STO - Makassar</div>
+                            <div class="experience-company">Internship</div>
+                            <div class="experience-date">Jul 2024 - Aug 2024</div>
+                            <div class="experience-description">
+                                Telkom STO (Service Telecommunication Operator) is a telecommunications service provider in Indonesia, focusing on providing reliable and high-quality telecommunication services.
+                            </div>
+                            <ul class="experience-list">
+                                <li>Perform installation and configuration of fiber optic networks</li>
+                                <li>Assisted technical team in fiber optic cable installation up to ODP and distribution lines.</li>
+                                <li>Conducted OTDR testing to ensure fiber optic connection quality.</li>
+                            </ul>
+                        </div>
+                        <img src="aset/images/telkomind.png" alt="STO Telkom Logo" class="experience-logo">
                     </div>
 
                     <h2 class="section-title">Organizational Experience</h2>
@@ -175,6 +196,7 @@
                 <!-- Education Section -->
                 <div class="content-section" id="education">
                     <h2 class="section-title">Education</h2>
+
                     <div class="experience-item">
                         <div class="experience-content">
                             <div class="experience-title">Telkom University</div>
@@ -190,6 +212,22 @@
                             </ul>
                         </div>
                         <img src="aset/images/telkom.png" alt="Telkom University Logo" class="experience-logo">
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-content">
+                            <div class="experience-title">SMK Telkom Makassar</div>
+                            <div class="experience-company">Access Network Engineering</div>
+                            <div class="experience-date">2018 - 2021</div>
+                            <div class="experience-description">
+                                Graduate of SMK Telkom Makassar majoring in Access Network Engineering with an average score of 94.71. Skilled in the installation and maintenance of telecommunication access networks.
+                            </div>
+                            <ul class="experience-list">
+                                <li>Installation and maintenance of telecommunication access networks</li>
+                                <li>Achieved average score of 94.71</li>
+                            </ul>
+                        </div>
+                        <img src="aset/images/smktelkom.jpg" alt="SMK Telkom Logo" class="experience-logo">
                     </div>
                 </div>
 
@@ -219,34 +257,16 @@
                 <!-- Projects Section -->
                 <div class="content-section" id="projects">
                     <h2 class="section-title">Projects</h2>
-                    <button class="btn" id="addProjectBtn">Add Project</button>
-                    <div id="projectForm" style="display: none; margin-top: 20px;">
-                        <form id="projectFormElement">
-                            <div style="margin-bottom: 10px;">
-                                <label for="projectName">Project Name:</label>
-                                <input type="text" id="projectName" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    <div id="projectsList" class="projects-grid" style="margin-top: 20px;">
+                        <div class="project-card">
+                            <img src="aset/images/figma.jpg" alt="Design application Capstone Design Wasteapp" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                            <div class="project-content">
+                                <div class="experience-title">Design application Capstone Design Wasteapp</div>
+                                <div class="experience-company">Technologies: UI/UX Design</div>
+                                <div class="experience-description">mendesign skema aplikas dan tampilan ui ux dengan ramah dan user friendly</div>
                             </div>
-                            <div style="margin-bottom: 10px;">
-                                <label for="projectDescription">Description:</label>
-                                <textarea id="projectDescription" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; height: 80px;"></textarea>
-                            </div>
-                            <div style="margin-bottom: 10px;">
-                                <label for="projectTech">Technologies:</label>
-                                <input type="text" id="projectTech" placeholder="e.g., HTML, CSS, JavaScript" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                            </div>
-                            <div style="margin-bottom: 10px;">
-                                <label for="projectImage">Image (optional):</label>
-                                <input type="file" id="projectImage" accept="image/*" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                            </div>
-                            <div style="margin-bottom: 10px;">
-                                <label for="projectLink">Link (optional):</label>
-                                <input type="url" id="projectLink" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                            </div>
-                            <button type="submit" class="btn">Add Project</button>
-                            <button type="button" class="btn" id="cancelBtn" style="background: #ccc; margin-left: 10px;">Cancel</button>
-                        </form>
+                        </div>
                     </div>
-                    <div id="projectsList" class="projects-grid" style="margin-top: 20px;"></div>
                 </div>
             </div>
         </main>
@@ -303,95 +323,6 @@
             });
         });
 
-        // Projects functionality
-        const addProjectBtn = document.getElementById('addProjectBtn');
-        const projectForm = document.getElementById('projectForm');
-        const projectFormElement = document.getElementById('projectFormElement');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const projectsList = document.getElementById('projectsList');
-        let projects = [];
-
-        // Load projects from localStorage or JSON
-        function loadProjects() {
-            const stored = localStorage.getItem('projects');
-            if (stored) {
-                projects = JSON.parse(stored);
-            } else {
-                fetch('projects.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        projects = data;
-                        displayProjects();
-                    })
-                    .catch(err => console.error('Error loading projects.json:', err));
-            }
-            displayProjects();
-        }
-
-        function saveProjects() {
-            localStorage.setItem('projects', JSON.stringify(projects));
-        }
-
-        function displayProjects() {
-            projectsList.innerHTML = '';
-            projects.forEach(project => {
-                const projectItem = document.createElement('div');
-                projectItem.className = 'project-card';
-                let imageHtml = project.image ? `<img src="${project.image}" alt="${project.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">` : '';
-                projectItem.innerHTML = `
-                    ${imageHtml}
-                    <div class="project-content">
-                        <div class="experience-title">${project.name}</div>
-                        <div class="experience-company">${project.tech || 'Technologies: N/A'}</div>
-                        <div class="experience-description">${project.description}</div>
-                        ${project.link ? `<a href="${project.link}" target="_blank" class="btn" style="margin-top: 10px;">View Project</a>` : ''}
-                    </div>
-                `;
-                projectsList.appendChild(projectItem);
-            });
-        }
-
-        addProjectBtn.addEventListener('click', () => {
-            projectForm.style.display = 'block';
-        });
-
-        cancelBtn.addEventListener('click', () => {
-            projectForm.style.display = 'none';
-            projectFormElement.reset();
-            document.getElementById('projectImage').value = '';
-        });
-
-        projectFormElement.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('projectName').value;
-            const description = document.getElementById('projectDescription').value;
-            const tech = document.getElementById('projectTech').value;
-            const link = document.getElementById('projectLink').value;
-            const imageFile = document.getElementById('projectImage').files[0];
-
-            const project = { name, description, tech, link };
-
-            if (imageFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    project.image = e.target.result;
-                    projects.push(project);
-                    saveProjects();
-                    displayProjects();
-                };
-                reader.readAsDataURL(imageFile);
-            } else {
-                projects.push(project);
-                saveProjects();
-                displayProjects();
-            }
-
-            projectForm.style.display = 'none';
-            projectFormElement.reset();
-        });
-
-        // Load projects on page load
-        document.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 </body>
 
