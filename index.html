@@ -35,6 +35,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="skills">
+                            <div class="nav-icon"></div>
+                            Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link" data-section="contact">
                             <div class="nav-icon"></div>
                             Contact
@@ -59,27 +65,27 @@
 
             <!-- Stats Cards -->
             <div class="stats-grid">
-                <div class="stat-card primary">
+                <div class="stat-card primary" data-section="education">
                     <div class="stat-number">8th</div>
                     <div class="stat-label">Current Semester</div>
                     <div class="stat-change positive">Telecommunication Engineering</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-section="experience">
                     <div class="stat-number">5</div>
                     <div class="stat-label">Experience</div>
                     <div class="stat-change positive">Professional Growth</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-section="experience">
                     <div class="stat-number">Fiber Optic</div>
                     <div class="stat-label">Specialization</div>
                     <div class="stat-change positive">Smart Technology</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-section="experience">
                     <div class="stat-number">2024</div>
                     <div class="stat-label">Recent Internship</div>
                     <div class="stat-change positive">KAI Indonesia</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-section="skills">
                     <div class="stat-number">Skills</div>
                     <div class="stat-label">Hard & Soft</div>
                 </div>
@@ -231,6 +237,21 @@
                     </div>
                 </div>
 
+                <!-- Skills Section -->
+                <div class="content-section" id="skills">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>Hard Skills</strong>
+                            <span>Microsoft Office, Fiber Optik, Canva, Figma</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Soft Skills</strong>
+                            <span>Manajemen Waktu, Kerja Sama Tim, Disiplin, Komunikasi yang Baik</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Contact Section -->
                 <div class="content-section" id="contact">
                     <h2 class="section-title">Contact Information</h2>
@@ -282,6 +303,7 @@
             'home': 'Dashboard',
             'experience': 'Experience',
             'education': 'Education',
+            'skills': 'Skills',
             'contact': 'Contact',
             'projects': 'Projects'
         };
@@ -290,15 +312,37 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetSection = link.getAttribute('data-section');
-                
+
                 // Update active nav link
                 navLinks.forEach(nav => nav.classList.remove('active'));
                 link.classList.add('active');
-                
+
                 // Update content sections
                 contentSections.forEach(section => section.classList.remove('active'));
                 document.getElementById(targetSection).classList.add('active');
-                
+
+                // Update page title
+                pageTitle.textContent = sectionTitles[targetSection];
+            });
+        });
+
+        // Stat card navigation
+        const statCards = document.querySelectorAll('.stat-card[data-section]');
+        statCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const targetSection = card.getAttribute('data-section');
+
+                // Update active nav link
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                const correspondingNav = document.querySelector(`.nav-link[data-section="${targetSection}"]`);
+                if (correspondingNav) {
+                    correspondingNav.classList.add('active');
+                }
+
+                // Update content sections
+                contentSections.forEach(section => section.classList.remove('active'));
+                document.getElementById(targetSection).classList.add('active');
+
                 // Update page title
                 pageTitle.textContent = sectionTitles[targetSection];
             });
